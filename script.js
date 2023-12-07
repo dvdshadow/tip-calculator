@@ -22,15 +22,28 @@ function calculateTip() {
         <p>Total Amount: $${totalAmount.toFixed(2)}</p>
         <p>Amount Per Person: $${totalPerPerson.toFixed(2)}</p>
     `;
+
+    // Show the reset button after calculation
+    document.getElementById('resetButton').style.display = 'block';
 }
+
+function resetForm() {
+    document.getElementById('billAmount').value = '';
+    document.getElementById('tipPercent').value = '';
+    document.getElementById('numberOfPeople').value = '';
+    document.getElementById('result').innerHTML = '';
+
+    // Hide the reset button again
+    document.getElementById('resetButton').style.display = 'none';
+}
+
 function handleEnter(event, nextFieldId) {
     if (event.key === 'Enter') {
-        if (nextFieldId === 'calculate') {
+        event.preventDefault(); // Prevent the default action to avoid submitting the form
+        if (nextFieldId === 'calculateButton') {
             calculateTip(); // If it's the last input, trigger calculation
         } else {
             document.getElementById(nextFieldId).focus(); // Otherwise, move to the next field
         }
-        event.preventDefault(); // Prevent the default action to avoid submitting the form
     }
 }
-
