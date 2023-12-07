@@ -23,3 +23,14 @@ function calculateTip() {
         <p>Amount Per Person: $${totalPerPerson.toFixed(2)}</p>
     `;
 }
+function handleEnter(event, nextFieldId) {
+    if (event.key === 'Enter') {
+        if (nextFieldId === 'calculate') {
+            calculateTip(); // If it's the last input, trigger calculation
+        } else {
+            document.getElementById(nextFieldId).focus(); // Otherwise, move to the next field
+        }
+        event.preventDefault(); // Prevent the default action to avoid submitting the form
+    }
+}
+
