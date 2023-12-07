@@ -1,7 +1,10 @@
 function calculateTip() {
     var billAmount = document.getElementById('billAmount').value;
-    var tipPercent = document.getElementById('tipPercent').value;
+    var tipInput = document.getElementById('tipPercent').value;
     var numberOfPeople = document.getElementById('numberOfPeople').value;
+
+    // Remove any % symbol and spaces from the tip input
+    var tipPercent = tipInput.replace(/[%\s]/g, '');
 
     if (billAmount === '' || tipPercent === '' || numberOfPeople === '' || numberOfPeople <= 0) {
         alert("Please enter valid values for bill amount, tip percentage, and number of people");
