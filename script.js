@@ -1,23 +1,25 @@
 function calculateTip() {
-    var billAmount = document.getElementById('billAmount').value;
+    var billAmount = parseFloat(document.getElementById('billAmount').value);
     var tipInput = document.getElementById('tipPercent').value;
-    var numberOfPeople = document.getElementById('numberOfPeople').value;
+    var numberOfPeople = parseInt(document.getElementById('numberOfPeople').value, 10);
 
     // Remove any % symbol and spaces from the tip input
-    var tipPercent = tipInput.replace(/[%\s]/g, '');
+    var tipPercent = parseFloat(tipInput.replace(/[%\s]/g, ''));
 
-    if (billAmount === '' || tipPercent === '' || numberOfPeople === '' || numberOfPeople <= 0) {
-        alert("Please enter valid values for bill amount, tip percentage, and number of people");
+    if (isNaN(billAmount) || isNaN(tipPercent) || isNaN(numberOfPeople) || numberOfPeople <= 0) {
+        alert("Please enter valid numbers for bill amount, tip percentage, and number of people");
         return;
     }
 
     var tipAmount = billAmount * (tipPercent / 100);
-    var totalAmount = parseFloat(billAmount) + tipAmount;
+    var totalAmount = billAmount + tipAmount;
     var tipPerPerson = tipAmount / numberOfPeople;
+    var totalPerPerson = totalAmount / numberOfPeople;
 
     document.getElementById('result').innerHTML = `
-        <p>Tip Amount: $${tipAmount.toFixed(2)}</p>
-        <p>Total Amount: $${totalAmount.toFixed(2)}</p>
+        <p>Total Tip: $${tipAmount.toFixed(2)}</p>
         <p>Tip Per Person: $${tipPerPerson.toFixed(2)}</p>
+        <p>Total Amount: $${totalAmount.toFixed(2)}</p>
+        <p>Amount Per Person: $${totalPerPerson.toFixed(2)}</p>
     `;
 }
