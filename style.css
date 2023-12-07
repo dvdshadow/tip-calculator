@@ -5,7 +5,6 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
-    margin: 0; /* Add this to remove default margin */
 }
 
 .calculator {
@@ -14,34 +13,47 @@ body {
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 90%; /* Or a fixed width like 400px */
-    max-width: 500px; /* Ensures it doesn't get too wide on larger screens */
+    width: 90%; /* Adjust as needed */
+    max-width: 400px; /* Prevents it from becoming too wide on large screens */
 }
 
 .input-group {
-    margin-bottom: 15px; /* Adjust space between input groups */
+    margin-bottom: 15px;
 }
 
-input[type=number],
-button {
+input[type=number] {
     width: calc(100% - 20px); /* Full width minus padding */
     padding: 10px;
-    margin-bottom: 10px; /* Space between inputs */
+    margin-bottom: 10px;
     border-radius: 4px;
     border: 1px solid #ddd;
 }
 
 button {
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    margin-bottom: 0; /* No space needed below the button */
+    display: block; /* Ensure buttons don't sit side-by-side */
+    width: 100%; /* Full-width buttons */
+    margin-top: 10px; /* Spacing above the button */
 }
 
 button:hover {
     background-color: #0056b3;
+}
+
+#resetButton {
+    padding: 8px 16px;
+    background-color: #6c757d;
+    color: white;
+    font-size: 0.9em;
+}
+
+#resetButton:hover {
+    background-color: #5a6268;
 }
 
 #result {
